@@ -1,9 +1,9 @@
 
-<?php include('header.php')?>
+<?php include  __DIR__ .'/header.php'?>
 
 <div class="main">
-  <button onclick="journals()" class="viewJurnals">Журналы</button>
-    <button onclick="authors()" class="viewAuthors">Авторы</button>
+  <a href="journals/viewJournals.php"><button class="viewJurnals">Журналы</button></a>
+  <a href="authors/viewAuthors.php"><button class="viewAuthors">Авторы</button></a>
 </div>
 
-  <?php include('footer.php')?>
+  <?php include  __DIR__ .'/footer.php'?>
