@@ -1,5 +1,5 @@
 <?php
-require_once('../db.php');
+require('../functions.php');
 include  '../header.php'
 ?>
 <div class="container">
@@ -9,9 +9,11 @@ include  '../header.php'
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Journals Details</h2>
-                        <a href="createJournal.php" class="btn btn-success pull-right">Add New Employee</a>
+                        <a href="createJournal.php" class="btn btn-success pull-left">Add New Journal</a>
+                        <a href="../index.php" class="btn btn-success pull-left">Go back</a>
                     </div>
-<?php // Attempt select query execution
+                    <?php
+    // Attempt select query execution
       $sql = "SELECT * FROM journals";
       if($result = mysqli_query($connection, $sql)){
           if(mysqli_num_rows($result) > 0){
@@ -24,6 +26,7 @@ include  '../header.php'
                           echo "<th>author</th>";
                           echo "<th>image</th>";
                           echo "<th>Relase Date</th>";
+                          echo "<th>Action</th>";
                       echo "</tr>";
                   echo "</thead>";
                   echo "<tbody>";
@@ -32,13 +35,13 @@ include  '../header.php'
                           echo "<td>" . $row['id'] . "</td>";
                           echo "<td>" . $row['title'] . "</td>";
                             echo "<td>" . $row['description'] . "</td>";
-                          echo "<td>" . $row['author'] . "</td>";
-                          echo "<td>" . $row['image'] . "</td>";
-                          echo "<td>" . $row['relase_date'] . "</td>";
+                          echo "<td>" ; getAuthor($row['author']); echo "</td>";
+                          echo "<td>" ."<img style='width:50%;' src = '../images/" .  $row['image'] . "'>" . "</td>";
+                          echo "<td>" . $row['release_date'] . "</td>";
                           echo "<td>";
-                              echo "<a href='read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
-                              echo "<a href='update.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                              echo "<a href='delete.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
+                              echo "<a href='readJournal.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='fas fa-eye'></i></a>";
+                              echo "<a href='updateJournal.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='fas fa-pen'></i></a>";
+                              echo "<a href='deleteJournal.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
                           echo "</td>";
                       echo "</tr>";
                   }
