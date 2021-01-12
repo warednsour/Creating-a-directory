@@ -24,9 +24,9 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
               $title = $row['title'];
                $description = $row['description'];
-               $author = $row['']
-                 $imagepath
-              $relasedate
+               $author = getAuthor($row['author']);
+                $imagepath = $row['image'];
+              $relasedate = $row['release_date'];
                 // Retrieve individual field value
 
             } else{
@@ -45,7 +45,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 
     // Close connection
     mysqli_close($link);
-} else{
+} else {
     // URL doesn't contain id parameter. Redirect to error page
     header("location: error.php");
     exit();
@@ -73,15 +73,19 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <h1>View Record</h1>
                     </div>
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>title</label>
                         <p class="form-control-static"><?php echo $row["name"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
+                        <label>description</label>
                         <p class="form-control-static"><?php echo $row["address"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Salary</label>
+                        <label>image</label>
+                        <p class="form-control-static"><?php echo $row["salary"]; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>author</label>
                         <p class="form-control-static"><?php echo $row["salary"]; ?></p>
                     </div>
                     <p><a href="index.php" class="btn btn-primary">Back</a></p>

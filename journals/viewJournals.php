@@ -35,7 +35,7 @@ include  '../header.php'
                           echo "<td>" . $row['id'] . "</td>";
                           echo "<td>" . $row['title'] . "</td>";
                             echo "<td>" . $row['description'] . "</td>";
-                          echo "<td>" ; getAuthor($row['author']); echo "</td>";
+                          echo "<td>" . getAuthors($row['author']).  "</td>";
                           echo "<td>" ."<img style='width:50%;' src = '../images/" .  $row['image'] . "'>" . "</td>";
                           echo "<td>" . $row['release_date'] . "</td>";
                           echo "<td>";

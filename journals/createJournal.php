@@ -54,7 +54,7 @@ if (isset($_POST['submit']))
         {
             if (is_numeric($authors[$i]))
             {
-                $author .= $authors[$i] . " ";
+                $author .= $authors[$i] . ",";
             }
         }
     }
