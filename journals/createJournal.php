@@ -49,14 +49,14 @@ if (isset($_POST['submit']))
     if (isset($_POST['authors']))
     {
         $authors = $_POST['authors'];
-        $author = '';
-        for ($i = 0;$i <= count($authors);$i++)
-        {
-            if (is_numeric($authors[$i]))
-            {
-                $author .= $authors[$i] . ",";
-            }
-        }
+        $author = implode(',',$authors);
+        // for ($i = 0;$i <= count($authors);$i++)
+        // {
+        //     if (is_numeric($authors[$i]))
+        //     {
+        //         $author .= $authors[$i] . ",";
+        //     }
+        // }
     }
     else
     {

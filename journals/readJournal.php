@@ -50,21 +50,8 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     header("location: error.php");
     exit();
 }
+ include('../header.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View Record</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        .wrapper{
-            width: 500px;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-<body>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -99,5 +86,4 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             </div>
         </div>
     </div>
-</body>
-</html>
+<?php include('../footer.php'); ?>

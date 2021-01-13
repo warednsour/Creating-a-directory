@@ -58,27 +58,42 @@ function getAuthors($id)
 function getJournal($id)
 {
   global $connection;
-  $sql = "SELECT * FROM journals WHERE id = ?";
-  if($stmt = mysqli_prepare($connection,$sql)){
-    // // Bind variables to the prepared statement as parameters
-    mysqli_stmt_bind_param($stmt, "i", $param_id);
+  $authorId = [];
+    $sql = "SELECT * FROM journals";
+    if($result = mysqli_query($connection, $sql)){
+        if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_array($result)){
 
-    // Set parameters
-    $param_id = $id;
-
-    // Attempt to execute the prepared statement
-    if(mysqli_stmt_execute($stmt)){
-        $result = mysqli_stmt_get_result($stmt);
-
-        if(mysqli_num_rows($result)){
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            return $row;
+              array_push($authorId,explode(',',$row['author']));
+            }
           }
-          // Close statement
-          mysqli_stmt_close($stmt);
-      }
-    }
-    echo "ERROR: Could not able to execute" . mysqli_error($connection);
+        }
+
+return $authorId;
+
+  // global $connection;
+  // $sql = "SELECT * FROM journals WHERE author = ?";
+  // if($stmt = mysqli_prepare($connection,$sql)){
+  //   // // Bind variables to the prepared statement as parameters
+  //   mysqli_stmt_bind_param($stmt, "i", $param_id);
+  //
+  //   // Set parameters
+  //   $param_id = $id;
+  //
+  //   // Attempt to execute the prepared statement
+  //   if(mysqli_stmt_execute($stmt)){
+  //       $result = mysqli_stmt_get_result($stmt);
+  //
+  //       if(mysqli_num_rows($result)){
+  //           $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+  //           return $row;
+  //         }
+  //         // Close statement
+  //         mysqli_stmt_close($stmt);
+  //     }
+  //   }
+  //   echo "ERROR: Could not able to execute" . mysqli_error($connection);
 }
 
+var_dump(getJournal(1));
 ?>
