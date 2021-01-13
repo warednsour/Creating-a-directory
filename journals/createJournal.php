@@ -1,5 +1,5 @@
 <?php
-require_once ('../db.php');
+require_once ('../App/db.php');
 include '../header.php';
 
 // Processing form data when form is submitted
@@ -18,7 +18,7 @@ if (isset($_POST['submit']))
     }
 
     //Discription
-    $discription = trim($_POST["description"]);
+    $description = trim($_POST["description"]);
 
     // Validate image
     if (isset($_FILES['image']))
@@ -40,7 +40,7 @@ if (isset($_POST['submit']))
         //Image size should not be more than 2 MB
         if ($file_size >= 2097152)
         {
-            $img_err[] = 'File size must be excately 2 MB';
+            $img_err[] = 'File size too big 2 MB maximum!';
         }
 
     }
@@ -127,7 +127,7 @@ if (isset($_POST['submit']))
               // Records created successfully. No errors
               $_POST = [];
               $errors = false;
-              header("Refresh:0");
+              header("Refresh:3");
             }
             else
             {

@@ -2,9 +2,9 @@
 
 // Check existence of id parameter before processing further
 if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-    // Include db file
-    require_once('../db.php');
-    require_once('../functions.php');
+    // Include db file and functions
+    require_once('../App/db.php');
+    require_once('../App/functions.php');
     // Prepare a select statement
     $sql = "SELECT * FROM journals WHERE id = ?";
 
@@ -24,7 +24,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
               $title = $row['title'];
                $description = $row['description'];
-               $author = getAuthor($row['author']);
+               $author = getAuthors($row['author']);
                 $imagepath = $row['image'];
               $relasedate = $row['release_date'];
                 // Retrieve individual field value
@@ -44,7 +44,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_stmt_close($stmt);
 
     // Close connection
-    mysqli_close($link);
+    mysqli_close($connection);
 } else {
     // URL doesn't contain id parameter. Redirect to error page
     header("location: error.php");
@@ -70,25 +70,31 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>View Record</h1>
+                        <h1>View Journal</h1>
                     </div>
                     <div class="form-group">
                         <label>title</label>
-                        <p class="form-control-static"><?php echo $row["name"]; ?></p>
+                        <p class="form-control-static"><?php echo $title; ?></p>
                     </div>
                     <div class="form-group">
                         <label>description</label>
-                        <p class="form-control-static"><?php echo $row["address"]; ?></p>
+                        <p class="form-control-static"><?php echo $description; ?></p>
                     </div>
                     <div class="form-group">
                         <label>image</label>
-                        <p class="form-control-static"><?php echo $row["salary"]; ?></p>
+                        <img class="form-control-static" style="width: 50%;" src ="../images/<?php echo $imagepath; ?>">
                     </div>
                     <div class="form-group">
                         <label>author</label>
-                        <p class="form-control-static"><?php echo $row["salary"]; ?></p>
+                        <?php for($i= 0;$i < count($author); $i++){ ?>
+                        <p class="form-control-static"><?php echo $author[$i]?></p>
+                    <?php    }?>
                     </div>
-                    <p><a href="index.php" class="btn btn-primary">Back</a></p>
+                    <div class="form-group">
+                        <label>release date</label>
+                        <p class="form-control-static"><?php echo $relasedate; ?></p>
+                    </div>
+                    <p><a href="viewJournals.php" class="btn btn-primary">Back</a></p>
                 </div>
             </div>
         </div>

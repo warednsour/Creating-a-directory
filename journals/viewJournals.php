@@ -1,5 +1,5 @@
 <?php
-require('../functions.php');
+require('../App/functions.php');
 include  '../header.php'
 ?>
 <div class="container">
@@ -35,7 +35,12 @@ include  '../header.php'
                           echo "<td>" . $row['id'] . "</td>";
                           echo "<td>" . $row['title'] . "</td>";
                             echo "<td>" . $row['description'] . "</td>";
-                          echo "<td>" . getAuthors($row['author']).  "</td>";
+                            $author = getAuthors($row['author']);
+                              echo "<td>" ;
+                           for($i= 0;$i < count($author); $i++){
+                                  echo  $author[$i] . "<br>" ;
+                                }
+                            echo "</td>";
                           echo "<td>" ."<img style='width:50%;' src = '../images/" .  $row['image'] . "'>" . "</td>";
                           echo "<td>" . $row['release_date'] . "</td>";
                           echo "<td>";
