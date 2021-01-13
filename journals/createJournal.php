@@ -1,6 +1,6 @@
 <?php
-require_once ('../App/db.php');
-include '../header.php';
+require_once ('../Config/db.php');
+
 
 // Processing form data when form is submitted
 if (isset($_POST['submit']))
@@ -148,9 +148,10 @@ if (isset($_POST['submit']))
     }
 
 }
+include '../header.php';
 ?>
 <div class="container">
-<div class="wrapper">
+<div class="wrConfiger">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

@@ -1,5 +1,5 @@
 <?php
-  require_once('../App/functions.php');
+  require_once('../Config/functions.php');
 
 
 ?>
@@ -8,7 +8,7 @@
 
 
 <div class="container">
-<div class="wrapper">
+<div class="wrConfiger">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -40,9 +40,9 @@
                             echo "<td>" . $row['middle_name'] . "</td>";
                             echo "<td>" . $row['last_name'] . "</td>";
                           echo "<td>";
-                              echo "<a href='readauthor.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='fas fa-eye'></i></a>";
-                              echo "<a href='updateauthor.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='fas fa-pen'></i></a>";
-                              echo "<a href='deleteauthor.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
+                              echo "<a href='readAuthor.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><i class='fas fa-eye'></i></a>";
+                              echo "<a href='updateAuthor.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='fas fa-pen'></i></a>";
+                              echo "<a href='deleteAuthor.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='far fa-trash-alt'></i></a>";
                           echo "</td>";
                       echo "</tr>";
                   }

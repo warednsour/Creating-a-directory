@@ -2,7 +2,7 @@
 // Process delete operation after confirmation
 if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Include config file
-    require_once "../App/db.php";
+    require_once "../Config/db.php";
 
     // Prepare a delete statement
     $sql = "DELETE FROM journals WHERE id = ?";

@@ -1,9 +1,9 @@
 <?php
-require('../App/functions.php');
+require('../Config/functions.php');
 include  '../header.php'
 ?>
 <div class="container">
-<div class="wrapper">
+<div class="wrConfiger">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

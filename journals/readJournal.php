@@ -3,8 +3,8 @@
 // Check existence of id parameter before processing further
 if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     // Include db file and functions
-    require_once('../App/db.php');
-    require_once('../App/functions.php');
+    require_once('../Config/db.php');
+    require_once('../Config/functions.php');
     // Prepare a select statement
     $sql = "SELECT * FROM journals WHERE id = ?";
 
@@ -52,7 +52,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 }
  include('../header.php');
 ?>
-    <div class="wrapper">
+    <div class="wrConfiger">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">

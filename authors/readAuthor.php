@@ -2,13 +2,15 @@
 
 // Check existence of id parameter before processing further
 if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
+
     // Include db file and functions
-    require_once('../App/db.php');
-    require_once('../App/functions.php');
+    require_once('../Config/db.php');
+    require_once('../Config/functions.php');
     // Prepare a select statement
-    $sql = "SELECT * FROM journals WHERE id = ?";
+    $sql = "SELECT * FROM authors WHERE id = ?";
 
     if($stmt = mysqli_prepare($connection, $sql)){
+
         // Bind variables to the prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "i", $param_id);
 
@@ -17,19 +19,21 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
+
             $result = mysqli_stmt_get_result($stmt);
 
-            if(mysqli_num_rows($result) == 1){
-                /* Fetch result row as an associative array. Since the result set contains only one row, we don't need to use while loop */
-                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            if(mysqli_num_rows($result)){
+    /* Fetch result row as an associative array. Since the result set contains only one row, we don't need to use while loop */
+              $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
               $first_name = $row['first_name'];
               $middle_name = $row['middle_name'];
               $last_name = $row['last_name'];
-              $list_of_journals = getJournals($row['id']);
+              $list_of_journals = getJournalsList($row['id']);
                 // Retrieve individual field value
 
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
+
                 header("location: error.php");
                 exit();
             }
@@ -52,18 +56,16 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
  include('../header.php');
 ?>
 
-    <div class="wrapper">
+    <div class="container">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>View Journal</h1>
+                        <h1>View Author</h1>
                     </div>
                     <div class="form-group">
                         <label>First name</label>
-                        <p class="form-control-static"><?php echo   $first_name
-                          $middle_name = $row['middle_name'];
-                          $last_name = $row['last_name'];; ?></p>
+                        <p class="form-control-static"><?php echo   $first_name ?></p>
                     </div>
                     <div class="form-group">
                         <label>middle name</label>
@@ -76,7 +78,9 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                     </div>
                     <div class="form-group">
                         <label>List of Journals</label>
-                        <p class="form-control-static"></p>
+                        <?php for($i = 0; $i < count($list_of_journals) ; $i++){?>
+                        <p class="form-control-static"><?php echo $list_of_journals[$i] ?></p>
+                      <?php } ?>
                     </div>
                     <p><a href="viewAuthors.php" class="btn btn-primary">Back</a></p>
                 </div>

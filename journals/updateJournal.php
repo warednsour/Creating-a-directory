@@ -1,6 +1,6 @@
 <?php
-    require_once('../App/db.php');
-    require_once('../App/functions.php');
+    require_once('../Config/db.php');
+    require_once('../Config/functions.php');
 
     // Define variables and initialize with empty values
     $title = $description = $author = $imagepath = $relasedate = "";
@@ -35,17 +35,18 @@
 
           $extensions = ["jpeg", "jpg", "png"];
 
-          if (in_array($file_ext, $extensions) === false)
+          if (in_array($file_ext, $extensions) === false))
           {
               $img_err[] = "extension not allowed, please choose a JPEG or PNG file.";
           }
 
           //Image size should not be more than 2 MB
-          if ($file_size >= 2097152)
+          if ($file_size >= 2097152))
           {
               $img_err[] = 'File size too big 2 MB maximum!';
           }
         }
+
       //Validate Authros
       if (isset($_POST['authors']))
       {
@@ -111,9 +112,11 @@
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt))
             {
+
               //Uploading the image
               $dirname = mkdir("../images/$foldername");
               move_uploaded_file($file_tmp, "../images/$foldername/" . $file_name);
+
               $_POST = [];
               // Records created successfully. No errors
               $errors = false;
@@ -162,7 +165,7 @@
                   $title = $row['title'];
                    $description = $row['description'];
                    $author = $row['author'];
-                    $imagepath = $row['image'];
+                  $imagepath = $row['image'];
                   $relasedate = $row['release_date'];
                   // Close statement
                   mysqli_stmt_close($stmt);
@@ -230,7 +233,6 @@ include '../header.php';
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text" name="title" class="form-control" value="<?php echo $title; ?>" required>
-                            <span class="help-block"><?php echo $title_err; ?></span>
                         </div>
 
 
@@ -242,7 +244,6 @@ include '../header.php';
                         <div class="form-group">
                             <label>image</label>
                             <input type="file" name="image"  value="<?php echo $imagepath; ?>"><?php echo $imagepath; ?>
-                            <span class="help-block"><?php echo $image_err; ?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($salary_err)) ? '' : ''; ?>">
@@ -254,33 +255,32 @@ include '../header.php';
                           -->
                             <select class="selectpicker form-group" multiple name="authors[]" data-dropup-auto="false" required>
                               <?php
-  //list of the authors
-  $sql_authors = "SELECT * FROM `authors`";
-  if ($result = mysqli_query($connection, $sql_authors))
-  {
-    if (mysqli_num_rows($result) > 0)
-    {
-        while ($row_authors = mysqli_fetch_array($result))
-        {
+                                                //list of the authors
+                                                $sql_authors = "SELECT * FROM `authors`";
+                                                if ($result = mysqli_query($connection, $sql_authors))
+                                                {
+                                                  if (mysqli_num_rows($result) > 0)
+                                                  {
+                                                      while ($row_authors = mysqli_fetch_array($result))
+                                                      {
 
-            $author = '';
-            $author .= $row_authors['first_name'];
-            $author .= ' ';
-            $author .= $row_authors['middle_name'];
-            $author .= ' ';
-            $author .= $row_authors['last_name'];
-            echo '<option value=' . $row_authors['id'] . '>' . $author . '</option>';
-        }
-    }
-  }
-  else
-  {
-    echo "ERROR: Could not able to execute $sql_authors. " . mysqli_error($connection);
-  }
+                                                          $author = '';
+                                                          $author .= $row_authors['first_name'];
+                                                          $author .= ' ';
+                                                          $author .= $row_authors['middle_name'];
+                                                          $author .= ' ';
+                                                          $author .= $row_authors['last_name'];
+                                                          echo '<option value=' . $row_authors['id'] . '>' . $author . '</option>';
+                                                      }
+                                                  }
+                                                }
+                                                else
+                                                {
+                                                  echo "ERROR: Could not able to execute $sql_authors. " . mysqli_error($connection);
+                                                }
 
-  ?>
+                                                  ?>
                             </select>
-                            <span class="help-block"><?php echo $author_err; ?></span>
                         </div>
 
 
