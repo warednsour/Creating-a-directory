@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
-        <wix-image data-src="https://static.wixstatic.com/media/eba1972f7f5d4f488239a1691ed1ef7d.jpg/v1/fill/w_1583,h_620,al_t,q_85,usm_0.66_1.00_0.01/eba1972f7f5d4f488239a1691ed1ef7d.webp" height="100px">
+        <image src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fdk.linkedin.com%2Fcompany%2Fr-b-afla-group-ltd&psig=AOvVaw16Y1fyyj0TzlD5lZIJdZbm&ust=1610673800755000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCICgktGhmu4CFQAAAAAdAAAAABAI" height="100px">
     </a>
     <h1 align="center">Тестовое задание №2</h1>
     <br>
