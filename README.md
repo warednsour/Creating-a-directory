@@ -1,7 +1,15 @@
 # Creating-a-directory
 
-#Тестовое задание №2
+<p align="center">
+    <a href="https://github.com/yiisoft" target="_blank">
+        <img src="https://mumbaimirror.indiatimes.com/photo/74720281.cms" height="100px">
+    </a>
+    <h1 align="center">Тестовое задание №2</h1>
+    <br>
+</p>
 
+ОПИСАНИЕ
+-------------------
 WEB-программист (PHP)
 Задание - Создание справочника
 Создать справочник журналов, с возможностью CRUD. (Можно использовать любой Framework или голый php)
@@ -20,18 +28,39 @@ WEB-программист (PHP)
 Должна быть возможность увидеть список всех журналов определенного автора.
 Сделать сортировку авторов по фамилии
 
-creating DataBase tables
+REQUIREMENTS
+------------
 
-database name : directory
+The minimum requirement by this project template that your Web server supports PHP 5.6.0.
 
-tables :
+CONFIGURATION AND DATABASE
+--------------------------
+### Database
 
-journals
+Edit the file `config/db.php` with real data, for example:
+```
+
+define('DB_SERVER' ,'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', 'mysql');
+define('DB_NAME','directory');
+
+```
+Database name : directory
+
+```
+CREATE DATABASE directory;
+```
+Creating DataBase tables
+
+Tables :
+
+```
 
 CREATE TABLE journals (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   title VARCHAR(100) NOT NULL,
-  description VARCHAR(255) NOT NULL,
+  description VARCHAR(255),
   image VARCHAR(100) NOT NULL,
   release_date DATE
 )
@@ -44,3 +73,5 @@ CREATE TABLE authros (
   middle_name VARCHAR(255),
   last_name VARCHAR(255) NOT NULL
 )
+
+```
