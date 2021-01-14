@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://mumbaimirror.indiatimes.com/photo/74720281.cms" height="100px">
+        <wix-image data-src="="https://static.wixstatic.com/media/eba1972f7f5d4f488239a1691ed1ef7d.jpg/v1/fill/w_1583,h_620,al_t,q_85,usm_0.66_1.00_0.01/eba1972f7f5d4f488239a1691ed1ef7d.webp"" height="100px">
     </a>
     <h1 align="center">Тестовое задание №2</h1>
     <br>
